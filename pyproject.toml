@@ -1,0 +1,9 @@
+[project]
+name = "storyweave"
+version = "0.0.1"
+description = "从短篇抽出人物卡、场景卡、风格 ID 与故事节拍草稿。"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
