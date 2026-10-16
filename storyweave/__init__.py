@@ -1,8 +1,9 @@
 """从短篇抽出档案草稿、确认档案、检查能不能出页。
 
-分三层：
+分四层：
 - 抽取（ITEM-1）：`storyweave.extract` / `storyweave.unsupported` —— 文本模型通读原文出草稿。
 - 确认关卡与档案（ITEM-2）：`storyweave.archive` / `storyweave.gate` —— 主人改并确认档案，跳过标记，出页检查。
+- 页剧本（ITEM-3）：`storyweave.pages` —— 按已确认档案与故事节拍写页剧本，算引用计数与带图要求。
 - 供应商适配层：`storyweave.model_client` —— 文本模型调用、拉取模型、图像生成。
 - 自带小评测集：`storyweave.eval_item1`。
 """
@@ -46,6 +47,18 @@ from storyweave.extract import (
     篇幅不符,
 )
 from storyweave.gate import 人物出页检查, 关卡非法, 整篇出页检查, 跳过无主线索, 跳过未支持
+from storyweave.pages import (
+    写页剧本,
+    引用次数,
+    落实带图要求,
+    要求参考图,
+    节拍已改,
+    构建页剧本提示,
+    重写页剧本,
+    页剧本已失效,
+    页剧本非法,
+    页原文位置,
+)
 from storyweave.model_client import (
     供应商配置,
     从环境变量读图像配置,
@@ -109,6 +122,17 @@ __all__ = [
     "整篇出页检查",
     "人物出页检查",
     "关卡非法",
+    # 页剧本（ITEM-3）
+    "写页剧本",
+    "重写页剧本",
+    "构建页剧本提示",
+    "引用次数",
+    "要求参考图",
+    "落实带图要求",
+    "页原文位置",
+    "节拍已改",
+    "页剧本已失效",
+    "页剧本非法",
     # 模型供应商适配层
     "供应商配置",
     "从环境变量读配置",
